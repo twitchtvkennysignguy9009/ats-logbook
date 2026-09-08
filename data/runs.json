@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-08 07:44:07",
+ "updated": "2026-09-08 08:01:12",
  "trips": [
   {
    "id": "2026-09-07 08:43:35#1",
@@ -14,6 +14,7 @@
    "to_company": "Flavorfair",
    "income": 462,
    "revenue": 462,
+   "penalty": 0,
    "planned_miles": 5.6,
    "driven_miles": 6.8,
    "damage": {
@@ -30,7 +31,9 @@
    "sleeps": 0,
    "extras": {},
    "tickets": [],
-   "fines": 0
+   "fines": 0,
+   "paid": 462,
+   "took_home": 462
   },
   {
    "id": "2026-09-07 09:00:27#2",
@@ -45,6 +48,7 @@
    "to_company": "Farmer's Barn",
    "income": 728,
    "revenue": 728,
+   "penalty": 0,
    "planned_miles": 141.7,
    "driven_miles": 141.7,
    "damage": {
@@ -74,7 +78,9 @@
      "amount": 140
     }
    ],
-   "fines": 280
+   "fines": 280,
+   "paid": 728,
+   "took_home": 448
   },
   {
    "id": "2026-09-07 09:35:57#3",
@@ -89,6 +95,7 @@
    "to_company": "Syntetico",
    "income": 684,
    "revenue": 684,
+   "penalty": 0,
    "planned_miles": 198.2,
    "driven_miles": 199.5,
    "damage": {
@@ -105,7 +112,9 @@
    "sleeps": 0,
    "extras": {},
    "tickets": [],
-   "fines": 0
+   "fines": 0,
+   "paid": 684,
+   "took_home": 684
   },
   {
    "id": "2026-09-07 10:05:42#4",
@@ -120,6 +129,7 @@
    "to_company": "Central Civil Works",
    "income": 6810,
    "revenue": 6810,
+   "penalty": 0,
    "planned_miles": 196.4,
    "driven_miles": 204.4,
    "damage": {
@@ -149,7 +159,9 @@
      "amount": 340
     }
    ],
-   "fines": 500
+   "fines": 500,
+   "paid": 6810,
+   "took_home": 6310
   }
  ]
 }

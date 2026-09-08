@@ -44,6 +44,19 @@
   .cargo { color: var(--blue); font-size: 15px; margin-top: 4px; }
   .cargo small { color: var(--dim); }
 
+  .math {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px;
+    background: #0f1116; border: 1px solid var(--line); border-radius: 8px;
+    padding: 10px 14px; margin-top: 12px;
+  }
+  .math .term { display: flex; flex-direction: column; }
+  .math .term b { font-size: 22px; font-variant-numeric: tabular-nums; line-height: 1.15; }
+  .math .term span { font-size: 11px; color: var(--dim); text-transform: uppercase; letter-spacing: .8px; }
+  .math .op { font-size: 21px; color: var(--dim); font-weight: 700; }
+  .math .kept { margin-left: auto; text-align: right; padding-left: 10px; border-left: 1px solid var(--line); }
+  .math .kept b { font-size: 26px; }
+  @media (max-width: 560px) { .math .kept { margin-left: 0; border-left: 0; padding-left: 0; } }
+
   .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(125px, 1fr)); gap: 8px; margin-top: 12px; }
   .cell { background: #0f1116; border: 1px solid var(--line); border-radius: 6px; padding: 7px 9px; }
   .cell b { display: block; font-size: 17px; font-variant-numeric: tabular-nums; }
@@ -116,13 +129,22 @@ function span(a, b) {
   return (h ? h + 'h ' : '') + m + 'm';
 }
 
+function paidFor(x) {
+  if (x.paid != null) return x.paid;
+  return x.revenue || (x.ended_by ? 0 : x.income) || 0;
+}
+function tookHome(x) {
+  return (x.took_home != null) ? x.took_home : paidFor(x) - (x.fines || 0) - (x.penalty || 0);
+}
+
 function totals() {
-  var t = {trips: 0, miles: 0, gross: 0, fines: 0, gallons: 0, sleeps: 0, tickets: 0};
+  var t = {trips: 0, miles: 0, gross: 0, fines: 0, kept: 0, gallons: 0, sleeps: 0, tickets: 0};
   TRIPS.forEach(function (x) {
     t.trips++;
     t.miles += x.driven_miles || x.planned_miles || 0;
-    t.gross += x.revenue || 0;
+    t.gross += paidFor(x);
     t.fines += x.fines || 0;
+    t.kept += tookHome(x);
     t.gallons += (x.fuel && x.fuel.gallons) || 0;
     t.sleeps += x.sleeps || 0;
     t.tickets += (x.tickets || []).length;
@@ -130,8 +152,9 @@ function totals() {
   var cells = [
     [t.trips, 'Loads hauled'],
     [num(t.miles), 'Miles driven'],
-    [money(t.gross), 'Earned'],
-    [money(t.fines), 'Paid in fines'],
+    ['<span class="money">' + money(t.gross) + '</span>', 'Got paid'],
+    ['<span class="fine">' + money(t.fines) + '</span>', 'Taken in fines'],
+    ['<span class="money">' + money(t.kept) + '</span>', 'Kept'],
     [t.tickets, 'Tickets'],
     [num(t.gallons) + ' gal', 'Fuel burned'],
     [t.sleeps, 'Nights slept']
@@ -151,14 +174,25 @@ function card(x) {
     return s + ((ex[k] && ex[k].cost) || 0);
   }, 0);
 
+  var terms = [
+    '<span class="term"><b class="money">' + money(paidFor(x)) + '</b><span>Got paid</span></span>',
+    '<span class="op">&minus;</span>',
+    '<span class="term"><b class="fine">' + money(x.fines) + '</b><span>Taken in fines</span></span>'
+  ];
+  if (x.penalty) {
+    terms.push('<span class="op">&minus;</span>',
+      '<span class="term"><b class="fine">' + money(x.penalty) + '</b><span>Cancelled load</span></span>');
+  }
+  terms.push('<span class="op">=</span>',
+    '<span class="term kept"><b class="money">' + money(tookHome(x)) + '</b><span>He kept</span></span>');
+  var mathRow = '<div class="math">' + terms.join('') + '</div>';
+
   var cells = [
     ['<b>' + num(x.driven_miles || x.planned_miles, 1) + '</b><span>Miles</span>', true],
-    ['<b class="money">' + money(x.revenue || x.income) + '</b><span>Paid</span>', true],
     ['<b>' + num(dmg.truck, 1) + '% / ' + num(dmg.trailer, 1) + '%</b><span>Truck / trailer</span>', true],
     ['<b>' + num(x.cargo_damage_delivered, 1) + '%</b><span>Cargo damage</span>', true],
     ['<b>' + num(fuel.gallons, 1) + ' gal</b><span>' + money(fuel.cost) + ' &middot; ' + (fuel.fills || 0) + ' fill-ups</span>', true],
     ['<b>' + (x.sleeps || 0) + '</b><span>Nights slept</span>', true],
-    ['<b class="fine">' + money(x.fines) + '</b><span>Fines</span>', (x.fines || 0) > 0],
     ['<b>' + money(road) + '</b><span>Tolls &amp; ferries</span>', road > 0]
   ];
 
@@ -177,7 +211,7 @@ function card(x) {
     '<div class="cargo">Hauling <b>' + esc(x.cargo || 'an unnamed load') + '</b>' +
       (comp ? ' <small>(' + comp + ')</small>' : '') +
       (x.ended_by && x.ended_by !== 'delivered' ? ' <small>&mdash; ' + esc(x.ended_by) + '</small>' : '') +
-    '</div>' +
+    '</div>' + mathRow +
     '<div class="grid">' + cells.filter(function (c) { return c[1]; })
         .map(function (c) { return '<div class="cell">' + c[0] + '</div>'; }).join('') + '</div>' +
     tk + '</div>';
