@@ -96,7 +96,7 @@
 <footer id="foot"></footer>
 
 <script>
-var TRIPS = [];
+var TRIPS = [], BANK = null;
 
 function money(n) { return '$' + Math.round(n || 0).toLocaleString('en-US'); }
 function num(n, d) {
@@ -149,7 +149,11 @@ function totals() {
     t.sleeps += x.sleeps || 0;
     t.tickets += (x.tickets || []).length;
   });
-  var cells = [
+  var cells = [];
+  if (BANK && BANK.known) {
+    cells.push(['<span class="money">' + money(BANK.balance) + '</span>', 'In the bank']);
+  }
+  cells = cells.concat([
     [t.trips, 'Loads hauled'],
     [num(t.miles), 'Miles driven'],
     ['<span class="money">' + money(t.gross) + '</span>', 'Got paid'],
@@ -158,7 +162,7 @@ function totals() {
     [t.tickets, 'Tickets'],
     [num(t.gallons) + ' gal', 'Fuel burned'],
     [t.sleeps, 'Nights slept']
-  ];
+  ]);
   document.getElementById('totals').innerHTML = cells.map(function (c) {
     return '<div class="tot"><b>' + c[0] + '</b><span>' + c[1] + '</span></div>';
   }).join('');
@@ -241,6 +245,7 @@ function load(first) {
     .then(function (d) {
       if (d.updated === STAMP && !first) return;      // nothing new since the last look
       STAMP = d.updated;
+      BANK = d.bank || null;
       TRIPS = (d.trips || []).filter(function (x) { return x.number; });
       totals();
       render();
