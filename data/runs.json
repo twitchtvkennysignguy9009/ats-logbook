@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-08 08:01:12",
+ "updated": "2026-09-08 13:02:40",
  "trips": [
   {
    "id": "2026-09-07 08:43:35#1",
@@ -162,6 +162,100 @@
    "fines": 500,
    "paid": 6810,
    "took_home": 6310
+  },
+  {
+   "id": "2026-09-08 12:10:32#1",
+   "number": 1,
+   "started_at": "2026-09-08 12:10:32",
+   "ended_at": "2026-09-08 12:37:28",
+   "ended_by": "delivered",
+   "cargo": "Scaffolding",
+   "from_city": "Ardmore",
+   "from_company": "NAMIQ",
+   "to_city": "Oklahoma City",
+   "to_company": "Myroo",
+   "income": 1156,
+   "revenue": 1156,
+   "penalty": 0,
+   "planned_miles": 119.3,
+   "driven_miles": 196.4,
+   "damage": {
+    "truck": 2.2,
+    "trailer": 0.8,
+    "cargo": 0.1
+   },
+   "cargo_damage_delivered": 0.0,
+   "fuel": {
+    "gallons": 0.0,
+    "cost": 0.0,
+    "fills": 0
+   },
+   "sleeps": 1,
+   "extras": {
+    "tolls": {
+     "count": 0,
+     "cost": 0
+    },
+    "ferries": {
+     "count": 0,
+     "cost": 0
+    },
+    "trains": {
+     "count": 0,
+     "cost": 0
+    }
+   },
+   "tickets": [],
+   "fines": 0,
+   "paid": 1156,
+   "took_home": 1156
+  },
+  {
+   "id": "2026-09-08 12:39:10#2",
+   "number": 2,
+   "started_at": "2026-09-08 12:39:10",
+   "ended_at": "2026-09-08 13:00:25",
+   "ended_by": "delivered",
+   "cargo": "Air Conditioning Complex",
+   "from_city": "Oklahoma City",
+   "from_company": "",
+   "to_city": "Tulsa",
+   "to_company": "",
+   "income": 7863,
+   "revenue": 7863,
+   "penalty": 0,
+   "planned_miles": 164.0,
+   "driven_miles": 165.3,
+   "damage": {
+    "truck": 0.6,
+    "trailer": 26.4,
+    "cargo": 0.7
+   },
+   "cargo_damage_delivered": 0.0,
+   "fuel": {
+    "gallons": 198.2,
+    "cost": 693.79,
+    "fills": 1
+   },
+   "sleeps": 1,
+   "extras": {
+    "tolls": {
+     "count": 0,
+     "cost": 0
+    },
+    "ferries": {
+     "count": 0,
+     "cost": 0
+    },
+    "trains": {
+     "count": 0,
+     "cost": 0
+    }
+   },
+   "tickets": [],
+   "fines": 0,
+   "paid": 7863,
+   "took_home": 7863
   }
  ]
 }
