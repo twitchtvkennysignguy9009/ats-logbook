@@ -1,0 +1,155 @@
+{
+ "updated": "2026-09-08 07:42:43",
+ "trips": [
+  {
+   "id": "2026-09-07 08:43:35#1",
+   "number": 1,
+   "started_at": "2026-09-07 08:43:35",
+   "ended_at": "2026-09-07 08:58:35",
+   "ended_by": "delivered",
+   "cargo": "Grain",
+   "from_city": "Fort Smith",
+   "from_company": "Flavorfair",
+   "to_city": "Fort Smith",
+   "to_company": "Flavorfair",
+   "income": 462,
+   "revenue": 462,
+   "planned_miles": 5.6,
+   "driven_miles": 6.8,
+   "damage": {
+    "truck": 0.2,
+    "trailer": 1.1,
+    "cargo": 0.0
+   },
+   "cargo_damage_delivered": 0.0,
+   "fuel": {
+    "gallons": 0.0,
+    "cost": 0.0,
+    "fills": 0
+   },
+   "sleeps": 0,
+   "extras": {},
+   "tickets": [],
+   "fines": 0
+  },
+  {
+   "id": "2026-09-07 09:00:27#2",
+   "number": 2,
+   "started_at": "2026-09-07 09:00:27",
+   "ended_at": "2026-09-07 09:30:18",
+   "ended_by": "delivered",
+   "cargo": "Dumpster",
+   "from_city": "Fort Smith",
+   "from_company": "18 Wheels",
+   "to_city": "Harrison",
+   "to_company": "Farmer's Barn",
+   "income": 728,
+   "revenue": 728,
+   "planned_miles": 141.7,
+   "driven_miles": 141.7,
+   "damage": {
+    "truck": 0.7,
+    "trailer": 0.5,
+    "cargo": 0.0
+   },
+   "cargo_damage_delivered": 0.0,
+   "fuel": {
+    "gallons": 46.9,
+    "cost": 163.99,
+    "fills": 1
+   },
+   "sleeps": 0,
+   "extras": {},
+   "tickets": [
+    {
+     "at": "2026-09-07 09:10:43",
+     "label": "Skipped the weigh station",
+     "offence": "avoid_weighing",
+     "amount": 140
+    },
+    {
+     "at": "2026-09-07 09:15:34",
+     "label": "Ran a red light",
+     "offence": "red_signal",
+     "amount": 140
+    }
+   ],
+   "fines": 280
+  },
+  {
+   "id": "2026-09-07 09:35:57#3",
+   "number": 3,
+   "started_at": "2026-09-07 09:35:57",
+   "ended_at": "2026-09-07 10:01:56",
+   "ended_by": "delivered",
+   "cargo": "Moving Containers",
+   "from_city": "Harrison",
+   "from_company": "US Beverages & Bottling",
+   "to_city": "Tulsa",
+   "to_company": "Syntetico",
+   "income": 684,
+   "revenue": 684,
+   "planned_miles": 198.2,
+   "driven_miles": 199.5,
+   "damage": {
+    "truck": 7.1,
+    "trailer": 2.6,
+    "cargo": 0.4
+   },
+   "cargo_damage_delivered": 0.0,
+   "fuel": {
+    "gallons": 0.0,
+    "cost": 0.0,
+    "fills": 0
+   },
+   "sleeps": 0,
+   "extras": {},
+   "tickets": [],
+   "fines": 0
+  },
+  {
+   "id": "2026-09-07 10:05:42#4",
+   "number": 4,
+   "started_at": "2026-09-07 10:05:42",
+   "ended_at": "2026-09-07 10:29:32",
+   "ended_by": "delivered",
+   "cargo": "School Bus",
+   "from_city": "Tulsa",
+   "from_company": "Yelco Busses",
+   "to_city": "Ardmore",
+   "to_company": "Central Civil Works",
+   "income": 6810,
+   "revenue": 6810,
+   "planned_miles": 196.4,
+   "driven_miles": 204.4,
+   "damage": {
+    "truck": 1.2,
+    "trailer": 0.8,
+    "cargo": 0.1
+   },
+   "cargo_damage_delivered": 0.0,
+   "fuel": {
+    "gallons": 0.0,
+    "cost": 0.0,
+    "fills": 0
+   },
+   "sleeps": 0,
+   "extras": {},
+   "tickets": [
+    {
+     "at": "2026-09-07 10:19:15",
+     "label": "Speeding",
+     "offence": "speeding",
+     "amount": 160
+    },
+    {
+     "at": "2026-09-07 10:22:50",
+     "label": "Car crash",
+     "offence": "crash",
+     "amount": 340
+    }
+   ],
+   "fines": 500
+  }
+ ]
+}
