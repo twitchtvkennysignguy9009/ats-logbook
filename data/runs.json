@@ -1,5 +1,5 @@
 {
- "updated": "2026-09-08 13:05:23",
+ "updated": "2026-09-08 13:49:04",
  "trips": [
   {
    "id": "2026-09-07 08:43:35#1",
@@ -256,6 +256,100 @@
    "fines": 0,
    "paid": 7863,
    "took_home": 7863
+  },
+  {
+   "id": "2026-09-08 13:05:49#7",
+   "number": 7,
+   "started_at": "2026-09-08 13:05:49",
+   "ended_at": "2026-09-08 13:19:53",
+   "ended_by": "delivered",
+   "cargo": "Moving Containers",
+   "from_city": "Tulsa",
+   "from_company": "Pickit",
+   "to_city": "Oklahoma City",
+   "to_company": "AI Automotive",
+   "income": 558,
+   "revenue": 558,
+   "penalty": 0,
+   "planned_miles": 121.2,
+   "driven_miles": 121.8,
+   "damage": {
+    "truck": 0.6,
+    "trailer": 0.4,
+    "cargo": 0.0
+   },
+   "cargo_damage_delivered": 0.0,
+   "fuel": {
+    "gallons": 0.0,
+    "cost": 0.0,
+    "fills": 0
+   },
+   "sleeps": 1,
+   "extras": {
+    "tolls": {
+     "count": 0,
+     "cost": 0
+    },
+    "ferries": {
+     "count": 0,
+     "cost": 0
+    },
+    "trains": {
+     "count": 0,
+     "cost": 0
+    }
+   },
+   "tickets": [],
+   "fines": 0,
+   "paid": 558,
+   "took_home": 558
+  },
+  {
+   "id": "2026-09-08 13:26:38#8",
+   "number": 8,
+   "started_at": "2026-09-08 13:26:38",
+   "ended_at": "2026-09-08 13:46:36",
+   "ended_by": "delivered",
+   "cargo": "Bulldozer",
+   "from_city": "Oklahoma City",
+   "from_company": "Taylor Construction Group",
+   "to_city": "Amarillo",
+   "to_company": "X-Tech Machinery",
+   "income": 7351,
+   "revenue": 7351,
+   "penalty": 0,
+   "planned_miles": 236.7,
+   "driven_miles": 245.4,
+   "damage": {
+    "truck": 1.3,
+    "trailer": 1.0,
+    "cargo": 0.2
+   },
+   "cargo_damage_delivered": 0.0,
+   "fuel": {
+    "gallons": 0.0,
+    "cost": 0.0,
+    "fills": 0
+   },
+   "sleeps": 1,
+   "extras": {
+    "tolls": {
+     "count": 0,
+     "cost": 0
+    },
+    "ferries": {
+     "count": 0,
+     "cost": 0
+    },
+    "trains": {
+     "count": 0,
+     "cost": 0
+    }
+   },
+   "tickets": [],
+   "fines": 0,
+   "paid": 7351,
+   "took_home": 7351
   }
  ]
 }
