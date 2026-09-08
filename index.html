@@ -233,18 +233,32 @@ function render() {
 
 document.getElementById('q').addEventListener('input', render);
 
-fetch('data/runs.json?t=' + Date.now())
-  .then(function (r) { return r.json(); })
-  .then(function (d) {
-    TRIPS = (d.trips || []).filter(function (x) { return x.number; });
-    totals();
-    render();
-    var u = parseStamp(d.updated);
-    document.getElementById('foot').textContent = u ? 'Last updated ' + day(u) + ' at ' + clock(u) : '';
-  })
-  .catch(function () {
-    document.getElementById('list').innerHTML = '<div class="empty">Could not load the logbook data.</div>';
-  });
+var STAMP = null;
+
+function load(first) {
+  return fetch('data/runs.json?t=' + Date.now())
+    .then(function (r) { return r.json(); })
+    .then(function (d) {
+      if (d.updated === STAMP && !first) return;      // nothing new since the last look
+      STAMP = d.updated;
+      TRIPS = (d.trips || []).filter(function (x) { return x.number; });
+      totals();
+      render();
+      var u = parseStamp(d.updated);
+      document.getElementById('foot').textContent = u
+        ? 'Last updated ' + day(u) + ' at ' + clock(u) + ' · this page checks for new trips every minute'
+        : '';
+    })
+    .catch(function () {
+      if (first) {
+        document.getElementById('list').innerHTML =
+          '<div class="empty">Could not load the logbook data.</div>';
+      }
+    });
+}
+
+load(true);
+setInterval(load, 60000);   // an open tab picks up new trips on its own
 </script>
 </body>
 </html>
